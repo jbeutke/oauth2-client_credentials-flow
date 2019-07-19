@@ -27,8 +27,6 @@ app.get('/get/the/token', (req, res) => {
 
     const Token_Endpoint = `http://localhost:8080/v1/oauth/tokens`;
     const Grant_Type = 'client_credentials';
-    const Client_Id = process.env.CLIENT_ID;
-    const Client_Secret = process.env.CLIENT_SECRET;
     const Scope = 'read_write';
 
     let body = `grant_type=${Grant_Type}&scope=${encodeURIComponent(Scope)}`;

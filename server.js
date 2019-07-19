@@ -28,19 +28,23 @@ app.get('/get/the/token', (req, res) => {
     const Token_Endpoint = `http://localhost:8080/v1/oauth/tokens`;
     const Grant_Type = 'client_credentials';
     const Scope = 'read_write';
+    const CLIENT_ID="test_client_1";
+    const CLIENT_SECRET="test_secret";
 
+    // grant_type y scope se envian en el body
     let body = `grant_type=${Grant_Type}&scope=${encodeURIComponent(Scope)}`;
 
     log.info(`Endpoint: ${Token_Endpoint}`);
 
     log.info(`Body: ${body}`);
 
+    // CLIENT_ID y CLIENT_SECRET se envian en el header como Basic Authentication
     fetch(Token_Endpoint, {
         method: 'POST',
         body: body,
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
-            'Authorization': 'Basic ' + new Buffer(querystring.escape(process.env.CLIENT_ID) + ':' + querystring.escape(process.env.CLIENT_SECRET)).toString('base64')
+            'Authorization': 'Basic ' + new Buffer(querystring.escape(CLIENT_ID) + ':' + querystring.escape(CLIENT_SECRET)).toString('base64')
         }
     }).then(async response => {
 
@@ -60,7 +64,7 @@ app.post('/call/protected/api', (req, res) => {
     const API_Host = 'http://localhost:9002';
     const API_Path = '/words';
 
-    //Call Microsoft Graph with your access token
+    //Call protected api with your access token
     fetch(`${API_Host}${API_Path}`, {
         headers: {
             'Authorization': `Bearer ${access_token}`

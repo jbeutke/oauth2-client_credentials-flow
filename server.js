@@ -26,10 +26,10 @@ app.get('/', (req, res) => {
 app.get('/get/the/token', (req, res) => {
 
     const Token_Endpoint = `http://localhost:8080/v1/oauth/tokens`;
-    const Grant_Type = 'client_credentials';
-    const Scope = 'read_write';
-    const CLIENT_ID="test_client_1";
-    const CLIENT_SECRET="test_secret";
+    const Grant_Type = '<grant_type>';
+    const Scope = '<scope>';
+    const CLIENT_ID= '<client_id>';
+    const CLIENT_SECRET= '<client_secret>';
 
     // grant_type y scope se envian en el body
     let body = `grant_type=${Grant_Type}&scope=${encodeURIComponent(Scope)}`;

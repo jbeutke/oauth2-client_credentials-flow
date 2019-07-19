@@ -27,3 +27,7 @@ git clone https://github.com/jbeutke/oauth2-client_credentials-flow.git
 4. Ingresar a http://localhost:8000 desde el navegador.
 
 5. Seguir las instrucciones.
+
+
+https://www.getpostman.com/collections/15a04afb248f14e393e7
+
